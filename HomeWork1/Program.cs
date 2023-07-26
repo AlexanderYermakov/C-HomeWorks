@@ -71,5 +71,5 @@ while(current < number)
     if(current % 2 == 0) {
         Console.WriteLine(current);
     }
-    current += 2;
+    current ++;
 }
