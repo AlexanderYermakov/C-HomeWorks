@@ -5,36 +5,26 @@
 14212 -> нет
 12821 -> да
 23432 -> да
-
-
-bool CheckingNumber(int number)
-{
-    
-
-}
-
-
-Console.ReadLine()
-
-
+*/
 
 Console.Write("Please input a number: ");
-int num = Convert.ToInt32(Console.ReadLine());
+int number = Convert.ToInt32(Console.ReadLine());
+int result = 0;
 
-// 3113
-int dig = num / 10;
-
-while((dig % 10) == 0)
+int FlipNumber(int number)
 {
-    int n1 = num % 10;
-    
+    while (number > 0)
+    {
+        result *= 10;
+        result += number % 10;
+        number /= 10;
+    }
+    return result;
 }
 
-//int n1 = num % 10;
+if(FlipNumber(number) == number) Console.WriteLine($"The number of {number} is a palyndrome");
+else Console.WriteLine($"The number of {number} is NOT a palyndrome");
 
-Console.WriteLine(dig);
-Console.WriteLine(n1);
-*/
 
 
 /* Задача 21
@@ -65,10 +55,14 @@ double zB = Convert.ToInt32(Console.ReadLine());
 
 Console.WriteLine(Distance3D(xA, yA, zA, xB, yB, zB));
 
+
+
+
 /* Задача 23
 Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N. 
 3 -> 1, 8, 27
 5 -> 1, 8, 27, 64, 125
+*/
 
 void CubeNumber(int n)
 {
@@ -86,4 +80,3 @@ int num = Convert.ToInt32(Console.ReadLine());
 if(num <= 0) Console.WriteLine("Uncorrect! Please input correct number");
 
 CubeNumber(num);
-*/
