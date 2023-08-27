@@ -58,26 +58,23 @@ ShowArray2D(myArray);
 5 9 2 3
 8 4 2 4
 17 -> такого числа в массиве нет
-*/
+
 
 int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
 {
     int[,] array = new int[rows, columns];
-    for(int i=0; i<rows; i++)
-    {
-        for(int j=0; j<columns; j++)
-        {
+    for(int i = 0; i < rows; i++)
+        for(int j = 0; j < columns; j++)
             array[i,j] = new Random().Next(minValue, maxValue+1);
-        }
-    }
+        
     return array;
 }
 
 void Show2dArray(int[,] array)
 {
-    for(int i=0; i<array.GetLength(0); i++)
+    for(int i = 0; i < array.GetLength(0); i++)
     {
-        for(int j=0; j <array.GetLength(1); j++)
+        for(int j = 0; j < array.GetLength(1); j++)
             Console.Write(array[i,j]+ " ");
         
         Console.WriteLine();
@@ -111,6 +108,7 @@ SearchElement(myArray, indexI, indexJ);
 Console.WriteLine();
 
 Show2dArray(myArray);
+*/
 
 
 /* Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
@@ -121,3 +119,63 @@ Show2dArray(myArray);
 8 4 2 4
 Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 */
+
+int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
+{
+    int[,] array = new int[rows, columns];
+    for(int i = 0; i < rows; i++)
+        for(int j = 0; j < columns; j++)
+            array[i,j] = new Random().Next(minValue, maxValue+1);        
+    
+    return array;
+}
+void ShowArray(double[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+        Console.Write(array[i]);
+    Console.WriteLine();
+}
+
+void Show2dArray(int[,] array)
+{
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+            Console.Write(array[i,j]+ " ");
+        
+        Console.WriteLine();
+    }
+}
+
+double[] ArithmeticMean(int[,] array)
+{
+    double[] arrayMean = new double[array.GetLength(0)];
+    
+    for(int i = 0; i < array.Length; i++)
+    {
+        int mean = 0;
+        for(int j = 0; j < array.GetLength(1); j++)
+            mean += array[i, j];
+
+        arrayMean[i] = mean / array.GetLength(1);
+    }
+    return arrayMean;
+}
+
+Console.Write("Input a quantity of rows: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a quantity of columns: ");
+int columns = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a min possible values: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a max possible values: ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+int[,] myArray = CreateRandom2dArray(rows,columns, min, max);
+double[] arrayMean = ArithmeticMean(myArray);
+
+Show2dArray(myArray);
+
+Console.WriteLine();
+
+ShowArray(arrayMean);
