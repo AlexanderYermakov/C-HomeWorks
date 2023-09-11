@@ -120,6 +120,16 @@ Show2dArray(myArray);
 Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 */
 
+
+Console.Write("Input a quantity of rows: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a quantity of columns: ");
+int columns = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a min possible values: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a max possible values: ");
+int max = Convert.ToInt32(Console.ReadLine());
+
 int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
 {
     int[,] array = new int[rows, columns];
@@ -128,12 +138,6 @@ int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
             array[i,j] = new Random().Next(minValue, maxValue+1);        
     
     return array;
-}
-void ShowArray(double[] array)
-{
-    for(int i = 0; i < array.Length; i++)
-        Console.Write(array[i]);
-    Console.WriteLine();
 }
 
 void Show2dArray(int[,] array)
@@ -147,29 +151,27 @@ void Show2dArray(int[,] array)
     }
 }
 
-double[] ArithmeticMean(int[,] array)
+void ShowArray(double[] array)
 {
-    double[] arrayMean = new double[array.GetLength(0)];
-    
     for(int i = 0; i < array.Length; i++)
-    {
-        int mean = 0;
-        for(int j = 0; j < array.GetLength(1); j++)
-            mean += array[i, j];
-
-        arrayMean[i] = mean / array.GetLength(1);
-    }
-    return arrayMean;
+        Console.Write(array[i] + " ");
+    Console.WriteLine();
 }
 
-Console.Write("Input a quantity of rows: ");
-int rows = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a quantity of columns: ");
-int columns = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a min possible values: ");
-int min = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a max possible values: ");
-int max = Convert.ToInt32(Console.ReadLine());
+double[] ArithmeticMean(int[,] array)
+{
+    double[] arrayResult = new double[array.GetLength(1)];
+    
+    for(int i = 0;  i < array.GetLength(1); i++)
+    {
+        double sum = 0;
+        for(int j = 0; j < array.GetLength(0); j++)
+            sum += array[i,j];
+        arrayResult[i] = sum / rows;
+    }    
+    return arrayResult;
+}
+
 
 int[,] myArray = CreateRandom2dArray(rows,columns, min, max);
 double[] arrayMean = ArithmeticMean(myArray);
